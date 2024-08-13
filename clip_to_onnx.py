@@ -84,7 +84,7 @@ def export_onnx(
         export_params=True,
         input_names=input_names,
         output_names=output_names,
-        # This is the lowest opset version that still works. There's a warning
+        # Default here used to be 9. There's a warning
         # about "Exporting aten::index operator of advanced indexing" but it's
         # emitted for every opset up to 16, the highest version supported by
         # torch.onnx.export().
