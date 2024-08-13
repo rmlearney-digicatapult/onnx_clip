@@ -88,7 +88,7 @@ def export_onnx(
         # about "Exporting aten::index operator of advanced indexing" but it's
         # emitted for every opset up to 16, the highest version supported by
         # torch.onnx.export().
-        opset_version=9,
+        opset_version=16,
         dynamic_axes=dynamic_axes,
     )
 
@@ -112,10 +112,10 @@ def main():
         output_names=["IMAGE_EMBEDDING"],
         dynamic_axes={
             "IMAGE": {
-                0: "image_batch_size",
+                0: "batch_size",
             },
             "IMAGE_EMBEDDING": {
-                0: "image_batch_size",
+                0: "batch_size",
             },
         },
         export_path=CLIP_IMAGE_ONNX_EXPORT_PATH,
@@ -129,10 +129,10 @@ def main():
         output_names=["TEXT_EMBEDDING"],
         dynamic_axes={
             "TEXT": {
-                0: "text_batch_size",
+                0: "batch_size",
             },
             "TEXT_EMBEDDING": {
-                0: "text_batch_size",
+                0: "batch_size",
             },
         },
         export_path=CLIP_TEXT_ONNX_EXPORT_PATH,
